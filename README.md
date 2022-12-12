@@ -30,7 +30,7 @@ def bfs(visited, graph, node): #function for BFS<br>
         visited.append(neighbour)<br>
         queue.append(neighbour)<br>
 
-# Driver Code<br>
+#Driver Code<br>
 print("Following is the Breadth-First Search")<br>
 bfs(visited, graph, '1')    # function calling<br>
 
@@ -59,6 +59,6 @@ def dfs(visited, graph, node):  #function for dfs <br>
         for neighbour in graph[node]:<br>
             dfs(visited, graph, neighbour)<br>
 
-# Driver Code<br>
+#Driver Code<br>
 print("Following is the Depth-First Search")<br>
 dfs(visited, graph, '5')<br>
