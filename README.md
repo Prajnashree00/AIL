@@ -39,7 +39,7 @@ Following is the Breadth-First Search<br>
 1 2 10 3 8 4 9 5 6 7 <br>
 
 4. Write a Program to Implement Depth First Search using Python.<br>
-# Using a Python dictionary to act as an adjacency list<br>
+#Using a Python dictionary to act as an adjacency list<br>
 graph = {<br>
  '5' : ['3','7'],<br>
  '3' : ['2', '4'],<br>
