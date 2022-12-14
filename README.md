@@ -115,3 +115,62 @@ Path: 2 <br>
 
 0 <br>
 1 <br>
+
+4.write a program to implement waterjug problem using python <br>
+from collections import defaultdict <br>
+jug1, jug2, aim = 4, 3, 2 <br>
+visited = defaultdict(lambda: False) <br>
+def waterJugSolver(amt1, amt2): <br>
+ if (amt1 == aim and amt2 == 0) or (amt2 == aim and amt1 == 0): <br>
+   print(amt1, amt2) <br>
+   return True <br>
+ if visited[(amt1, amt2)] == False: <br>
+   print(amt1, amt2) <br>
+   visited[(amt1, amt2)] = True <br>
+   return (waterJugSolver(0, amt2) or <br>
+ waterJugSolver(amt1, 0) or <br>
+ waterJugSolver(jug1, amt2) or <br>
+ waterJugSolver(amt1, jug2) or <br>
+ waterJugSolver(amt1 + min(amt2, (jug1-amt1)), <br>
+ amt2 - min(amt2, (jug1-amt1))) or <br>
+ waterJugSolver(amt1 - min(amt1, (jug2-amt2)), <br>
+ amt2 + min(amt1, (jug2-amt2)))) <br>
+ else: <br>
+   return False <br>
+print("Steps: ") <br>
+waterJugSolver(0, 0) <br>
+
+output: <br>
+Steps:  <br>
+0 0 <br>
+4 0 <br>
+4 3 <br>
+0 3 <br>
+3 0 <br>
+3 3 <br>
+4 2 <br>
+0 2 <br>
+True <br>
+
+5. Write a Program to Implement Tower of Hanoi using Python. <br>
+def TowerOfHanoi(n , source, destination, auxiliary): <br>
+    if n==1: <br>
+        print ("Move disk 1 from source",source,"to destination",destination) <br>
+        return <br>
+    TowerOfHanoi(n-1, source, auxiliary, destination) <br>
+    print ("Move disk",n,"from source",source,"to destination",destination) <br>
+    TowerOfHanoi(n-1, auxiliary, destination, source) <br>
+
+n = 3 <br>
+TowerOfHanoi(n,'A','B','C') <br>
+
+output:
+Move disk 1 from source A to destination B <br>
+Move disk 2 from source A to destination C <br>
+Move disk 1 from source B to destination C <br>
+Move disk 3 from source A to destination B <br>
+Move disk 1 from source C to destination A <br>
+Move disk 2 from source C to destination B <br>
+Move disk 1 from source A to destination B <br>
+
+
