@@ -286,3 +286,9 @@ def play_game(): <br>
     return(winner) <br>
 #Driver Code <br>
 print("Winner is: " + str(play_game())) <br>
+
+output:
+![image](https://user-images.githubusercontent.com/97970956/208869442-ba12fcbf-3940-400a-b6b5-f4c38ce32718.png)<br>
+![image](https://user-images.githubusercontent.com/97970956/208869644-d412b24e-7f04-4b7b-9dc4-70b1fe50bf49.png)<br>
+
+
