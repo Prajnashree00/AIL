@@ -267,7 +267,7 @@ def evaluate(board): <br>
         winner = -1
     return winner <br>
  
-# Main function to start the game <br>
+#Main function to start the game <br>
 def play_game(): <br>
     board, winner, counter = create_board(), 0, 1 <br>
     print(board) <br>
