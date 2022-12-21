@@ -252,7 +252,7 @@ def diag_win(board, player): <br>
                 win = False <br>
     return win  <br>
 #Evaluates whether there is <br>
-# inner or a tie <br>
+#inner or a tie <br>
 def evaluate(board): <br>
     winner = 0 <br>
  
