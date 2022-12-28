@@ -324,4 +324,8 @@ if __name__ =="__main__": <br>
     graph=[[0,10,15,20],[10,0,35,25],[15,35,0,30],[20,25,30,0]] <br>
     s=0 <br>
     print(travellingSalesmanProblem(graph,s)) <br>
-        
+ 
+ 
+ output:<br>
+ ![image](https://user-images.githubusercontent.com/97970956/209785651-705557f1-8fed-4b0c-b9ec-b48d1cf2e3b8.png)<br>
+
