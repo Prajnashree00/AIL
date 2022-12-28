@@ -297,27 +297,27 @@ from sys import maxsize <br>
 from itertools import permutations <br>
 V=4 <br>
 def travellingSalesmanProblem(graph,s): <br>
-    # store all vertex apart from source vertex <br>
+    #store all vertex apart from source vertex <br>
     vertex=[] <br>
     for i in range(V): <br>
         if i!=s: <br>
             vertex.append(i) <br>
-    # store minimum weight Hamiltonian Cycle   <br>  
+    #store minimum weight Hamiltonian Cycle   <br>  
     min_path=maxsize <br>
     next_permutation=permutations(vertex) <br> <br>
     for i in next_permutation: <br>
-        # store current Path weight(cost) <br>
+        #store current Path weight(cost) <br>
         current_pathweight=0 <br>
-        # compute current path weight <br>
+        #compute current path weight <br>
         k=s <br>
         for j in i: <br>
             current_pathweight+=graph[k][j] <br>
             k=j <br>
         current_pathweight+=graph[k][s] <br>
-        # Update minimum <br>
+        #Update minimum <br>
         min_path=min(min_path,current_pathweight) <br>
     return min_path <br>
-# Driver Code <br>
+#Driver Code <br>
 if __name__ =="__main__": <br>
     
        # matrix representation of graph <br>
