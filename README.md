@@ -585,3 +585,103 @@ aStarAlgo('A', 'G')<br>
 
 output:<br>
 ![image](https://user-images.githubusercontent.com/97970956/210525773-c8a4c0ee-da96-4a93-a128-029d0adaa7ab.png)<br>
+
+11.write a program to implent ao* algorithm<br>
+class Graph:<br>
+    def __init__(self, graph, heuristicNodeList, startNode): #instantiate graph object with graph topology, heuristic values, start node<br>
+        self.graph = graph<br>
+        self.H=heuristicNodeList<br>
+        self.start=startNode<br>
+        self.parent={}<br>
+        self.status={}<br>
+        self.solutionGraph={}<br>
+        
+    def applyAOStar(self): <br>
+        self.aoStar(self.start, False)<br>
+
+    def getNeighbors(self, v):<br>
+        return self.graph.get(v,'')<br>
+
+    def getStatus(self,v): <br>
+        return self.status.get(v,0)<br>
+
+    def setStatus(self,v, val): <br>
+        self.status[v]=val<br>
+
+    def getHeuristicNodeValue(self, n):<br>
+        return self.H.get(n,0) <br>
+
+    def setHeuristicNodeValue(self, n, value):<br>
+        self.H[n]=value<br>
+<br>
+    def printSolution(self):<br>
+        print("FOR GRAPH SOLUTION, TRAVERSE THE GRAPH FROM THE START NODE:",self.start)<br>
+        print("------------------------------------------------------------")<br>
+        print(self.solutionGraph)<br>
+        print("------------------------------------------------------------")<br>
+
+    def computeMinimumCostChildNodes(self, v): <br>
+        minimumCost=0<br>
+        costToChildNodeListDict={}<br>
+        costToChildNodeListDict[minimumCost]=[]<br>
+        flag=True<br>
+        for nodeInfoTupleList in self.getNeighbors(v): <br>
+            cost=0<br>
+            nodeList=[]<br>
+            for c, weight in nodeInfoTupleList:<br>
+                cost=cost+self.getHeuristicNodeValue(c)+weight<br>
+                nodeList.append(c)<br>
+            if flag==True:<br>
+                minimumCost=cost<br>
+                costToChildNodeListDict[minimumCost]=nodeList <br>
+                flag=False<br>
+            else: <br>
+                if minimumCost>cost:<br>
+                    minimumCost=cost<br>
+                    costToChildNodeListDict[minimumCost]=nodeList <br>
+        return minimumCost, costToChildNodeListDict[minimumCost] <br>
+    def aoStar(self, v, backTracking): <br>
+        print("HEURISTIC VALUES :", self.H)<br>
+        print("SOLUTION GRAPH :", self.solutionGraph)<br>
+        print("PROCESSING NODE :", v)<br>
+        print("-----------------------------------------------------------------------------------------")<br>
+        if self.getStatus(v) >= 0: <br>
+            minimumCost, childNodeList = self.computeMinimumCostChildNodes(v)<br>
+            print(minimumCost, childNodeList)<br>
+            self.setHeuristicNodeValue(v, minimumCost)
+            self.setStatus(v,len(childNodeList))<br>
+            solved=True<br>
+            for childNode in childNodeList:<br>
+                self.parent[childNode]=v<br>
+                if self.getStatus(childNode)!=-1:<br>
+                    solved=solved & False<br>
+            if solved==True:<br>
+                self.setStatus(v,-1)<br>
+                self.solutionGraph[v]=childNodeList <br>
+            if v!=self.start:<br>
+                self.aoStar(self.parent[v], True)<br>
+            if backTracking==False:<br>
+                for childNode in childNodeList:<br>
+                    self.setStatus(childNode,0)<br>
+                    self.aoStar(childNode, False)<br>
+print ("Graph - 1")<br>
+h1 = {'A': 1, 'B': 6, 'C': 2, 'D': 12, 'E': 2, 'F': 1, 'G': 5, 'H': 7,'I': 7, 'J': 1}<br>
+graph1 = { <br>
+    'A': [[('B', 1), ('C', 1)], [('D', 1)]],<br>
+    'B': [[('G', 1)], [('H', 1)]],<br>
+    'C': [[('J', 1)]],<br>
+    'D': [[('E', 1), ('F', 1)]],<br>
+    'G': [[('I', 1)]]<br>
+}<br>
+
+G2 = Graph(graph1, h1, 'A') <br>
+G2.applyAOStar()<br>
+G2.printSolution()<br>
+
+output:<br>
+![image](https://user-images.githubusercontent.com/97970956/211764876-616a22cc-a9fd-4e0b-b01c-637a33d5afed.png)<br>
+![image](https://user-images.githubusercontent.com/97970956/211764967-3c412176-f94e-4b94-b692-23ab4a494405.png)<br>
+![image](https://user-images.githubusercontent.com/97970956/211765085-49382929-bc83-47a6-82df-297ac2aef37a.png)<br>
+
+
+
